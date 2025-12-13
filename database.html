@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>StudioArt - Share photos</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .logo {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 2em;
+            color: #333;
+        }
+        img {
+            margin: 0;
+            padding: 20px;
+            max-width: 100%;
+            height: auto;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        h1, p {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        nav {
+           display: flex;
+           gap: 20px;
+        }
+        nav a {
+           padding: 8px 12px;
+           border-radius: 4px;
+           transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+           background-color: #e0e0e0;
+           text-decoration: none;
+        }
+        .search-bar {
+            max-width: 1200px;
+            margin: 20px auto 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .search-bar input {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        .search-bar button {
+            padding: 10px 14px;
+            border: none;
+            background-color: #333;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .search-bar button:hover {
+            background-color: #555;
+        }
+        ul {
+           list-style: none;
+           padding: 0;
+           max-width: 1200px;
+           margin: 20px auto;
+        }
+        a {
+           text-decoration: none;
+           color: #333;
+        }
+        a:hover {
+           text-decoration: underline;
+        }
+    </style>
+    <header>
+        <div class="logo">StudioArt</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="upload.html">Upload</a>
+            <a href="terms.html">Terms</a>
+            <a href="trending.html">Trending on StudioArt</a>
+            <a href="faq.html">Frequently asked...</a>
+        </nav>
+    </header>
+    <h1>Database</h1>
+    <div class="search-bar">
+        <input id="searchInput" type="search" placeholder="Search photos by title or tags">
+        <button id="searchButton" type="button">Search</button>
+    </div>
+    <ul id="results"></ul>
+    <script>
+        const photos = [
+            { title: 'Halloween Fun', tags: ['halloween', 'party', 'decor'], src: 'img/terbtue54ub89u5968ebrejn80mtdo.jpeg' },
+        ];
+
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const resultsList = document.getElementById('results');
+
+        function renderResults(list) {
+            resultsList.innerHTML = '';
+            if (list.length === 0) {
+                resultsList.innerHTML = '<li>No matches found.</li>';
+                return;
+            }
+            list.forEach(photo => {
+                const li = document.createElement('li');
+                li.textContent = `${photo.title} — ${photo.tags.join(', ')}`;
+                resultsList.appendChild(li);
+            });
+        }
+
+        function handleSearch() {
+            const term = searchInput.value.trim().toLowerCase();
+            const filtered = photos.filter(photo => {
+                return (
+                    photo.title.toLowerCase().includes(term) ||
+                    photo.tags.some(tag => tag.toLowerCase().includes(term))
+                );
+            });
+            renderResults(filtered);
+        }
+
+        searchButton.addEventListener('click', handleSearch);
+        searchInput.addEventListener('input', handleSearch);
+
+        // Render all by default
+        renderResults(photos);
+    </script>
+</body>
+</html>
