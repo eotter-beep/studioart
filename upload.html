@@ -72,13 +72,19 @@
         <h1>Hello!</h1>
         <p>Submit your photos in the forest!</p>
         <form id="uploadForm" enctype="multipart/form-data">
-            <input type="file" name="photo" accept="image/*" required>
-            <input type="text" placeholder="Name" name="name" required>
+            <input type="file" name="photo" accept="image/*">
+            <input type="text" placeholder="Name" name="name">
             <input type="text" placeholder="Description" name="description">
+            <input type="file" name="song" accept="audio/wav">
+            <input type="text" placeholder="Song name" name="songName">
+            <input type="text" placeholder="Artist name" name="artistName">
             <p>Be sure to include your input in the email body.</p>
             <p>By clicking the checkbox, you agree to the <a href="terms.html">terms of service</a>.</p>
             <input type="checkbox" name="terms" required>
             <a href="mailto:studioartsupport@proton.me?subject=Hello%20I%20want%20to%20submit%20a%20photo">Submit</a>
+            <p>For songs, please use the input bars that say "Song name" and "Artist name".</p>
+            <p>For photos, please use the input bars that say "Name of post"</p>
+            <p>Your songs will be shared using audio.com</p>
         </form>
         <p>Want to support us?</p>
         <p>-------------------------</p>

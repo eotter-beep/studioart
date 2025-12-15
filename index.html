@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>StudioArt - Share photos</title>
+    <title>StudioArt - Share content</title>
 </head>
 <body>
     <style>
@@ -49,6 +49,28 @@
         nav a:hover {
            background-color: #e0e0e0;
            text-decoration: none;
+        }
+        .search-box {
+            display: flex;
+            gap: 8px;
+        }
+        .search-box input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .search-box button {
+            padding: 8px 16px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .search-box button:hover {
+            background-color: #555;
         }
         ul {
            list-style: none;
@@ -118,7 +140,11 @@
             <a href="menu.html">More...</a>
         </nav>
     </header>
-    <h1>Share your photos with the world</h1>
+    <h1>Share your content with the world</h1>
+    <div class="search-box">
+        <input type="text" id="siteSearch" placeholder="Search site...">
+        <button onclick="performSearch()">Search</button>
+    </div>
     <p>
     As seen on
     <img src="siteassets/hackernews.png" alt="Hacker News logo" style="vertical-align: middle; height: 4em;">
@@ -138,6 +164,32 @@
             // Delay removal slightly to allow the overlay to be seen on fast loads
             setTimeout(() => overlay.classList.add('hide'), 300);
         });
+        
+        const sitePages = [
+            { title: 'Home', url: 'index.html', content: 'Share your content with the world' },
+        ];
+        
+        function performSearch() {
+            const query = document.getElementById('siteSearch').value.toLowerCase().trim();
+            if (!query) return;
+            
+            const results = sitePages.filter(page => 
+                page.title.toLowerCase().includes(query) || 
+                page.content.toLowerCase().includes(query)
+            );
+            
+            if (results.length > 0) {
+                window.location.href = results[0].url;
+            } else {
+                alert('No pages found matching: ' + query);
+            }
+        }
+        
+        document.getElementById('siteSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
     </script>
-</body>
-</html>
+    </body>
+    </html>
