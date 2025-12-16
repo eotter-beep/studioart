@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>StudioArt - Share photos</title>
+    <title>StudioArt - Share content</title>
 </head>
 <body>
     <style>
@@ -49,6 +49,28 @@
         nav a:hover {
            background-color: #e0e0e0;
            text-decoration: none;
+        }
+        .search-box {
+            display: flex;
+            gap: 8px;
+        }
+        .search-box input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .search-box button {
+            padding: 8px 16px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .search-box button:hover {
+            background-color: #555;
         }
         ul {
            list-style: none;
@@ -107,6 +129,7 @@
             <div>StudioArt is loading...</div>
         </div>
     </div>
+    <header>
         <div class="logo">StudioArt</div>
         <nav>
             <a href="index.html">Home</a>
@@ -114,16 +137,15 @@
             <a href="terms.html">Terms</a>
             <a href="trending.html">Trending on StudioArt</a>
             <a href="faq.html">Frequently asked...</a>
-            <a href="https://x.com/intent/post?url=https://atstudioart.netify.app">Share to X</a>
-            <a href="labelfinder/index.html">Become a developer (disabled due to StudioArt is now open sourced, for more info read the blog)</a>
+            <a href="menu.html">More...</a>
         </nav>
-    <ul>
-    <script>
-        const overlay = document.getElementById('loadingOverlay');
-        window.addEventListener('load', () => {
-            // Delay removal slightly to allow the overlay to be seen on fast loads
-            setTimeout(() => overlay.classList.add('hide'), 300);
-        });
-    </script>
+    </header>
+    <h1>StudioArt LabelFinder</h1>
+    <p>The popular platform now has a way to find a music label without it being a hassle.</p>
+    <p>Less credits, more opportunities.</p>
+    <h2>Why StudioArt LabelFinder?</h2>
+    <p>It has a user-friendly interface, and genres added by the community! It's a great way to find genres without having to search through countless websites.</p>
+    <a href="labelfinder/label.html">Music label?</a>
+    <a href="labelfinder/artist.html">Artist?</a>
 </body>
 </html>
